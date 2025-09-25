@@ -9,3 +9,13 @@ class Doctor(models.Model):
     
 def __str__(self):
     return self.user.username
+
+class Patient(models.Model):
+    user=models.OneToOneField(User, on_delete=models.CASCADE)
+    phone=models.CharField(max_length=15)
+    
+def __str__(self):
+    return self.user.username
+
+
+
