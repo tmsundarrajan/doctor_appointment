@@ -17,5 +17,15 @@ class Patient(models.Model):
 def __str__(self):
     return self.user.username
 
-
+class Appointment(models.Model):
+    doctor=models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    patient=models.ForeignKey(Patient, on_delete=models.CASCADE)
+    date=models.DateField()
+    time=models.TimeField()
+    symptoms=models.TextField()
+    status=models.CharField(max_length=20, default='pending')
+    
+def __str__(self):
+    return f"{self.patient} with {self.doctor} on {self.date}"
+    
 
