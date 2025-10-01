@@ -6,9 +6,9 @@
 {% endif %}
 <ul>
     {% for appt in appointment %}
-    <li> {{appt.date}}{{appt.time}} with {{appt.doctor if user.patient else appt.patient}} - Status: {{appt.status}} </li>
+        <li> {{appt.date}}{{appt.time}} with {{appt.doctor if user.patient else appt.patient}} - Status: {{appt.status}} </li>
     {% empty %}
-    <li>No appointments found.</li>
+        <li>No appointments found.</li>
     {% endfor %}
 </ul>
 {% endblock %}
