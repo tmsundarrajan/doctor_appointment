@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Your Appointments</h2>
+<h2>{% block title %}Your Appointments{% endblock %}</h2>
 {% if user.patient %}
 <a href="{% url 'book_appointment' %}">Book Appointment</a>
 {% endif %}

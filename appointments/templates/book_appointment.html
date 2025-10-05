@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>book Appointment</h2>
+<h2>{% block title %}book Appointment{% endblock %}</h2>
 <form method="post">
 {% csrf_token %}
 <label>Doctor:</label>
