@@ -1,10 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Doctor, Patient, Appointment
+from django.contrib.auth import logout
 
 
 def home(request):
     return render(request, 'home.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
 @login_required
 def dashboard(request):
@@ -32,5 +37,7 @@ def book_appointment(request):
     
     doctors=Doctor.objects.all()
     return render(request, 'book_appointment.html', {'doctors':doctors})
+
+
 
 
