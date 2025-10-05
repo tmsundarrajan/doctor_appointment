@@ -8,12 +8,12 @@ def home(request):
 
 @login_required
 def dashboard(request):
-    if hasattr(request.user, 'doctor'):
-        appointments=Appointment.objects.filter(doctor=request.user.doctor)
-    elif hasattr(request.user, 'patient'):
+    if hasattr(request.user, 'patient'):
         appointments=Appointment.objects.filter(patient=request.user.patient)
+    elif hasattr(request.user, 'doctor'):
+        appointments=Appointment.objects.filter(doctor=request.user.doctor)
     else:
-        appointments=None
+        appointments=[]
     return render(request, 'dashboard.html', {'appointments':appointments})
 
 @login_required

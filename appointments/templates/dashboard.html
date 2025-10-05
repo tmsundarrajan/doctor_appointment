@@ -5,8 +5,12 @@
 <a href="{% url 'book_appointment' %}">Book Appointment</a>
 {% endif %}
 <ul>
-    {% for appt in appointment %}
-        <li> {{appt.date}}{{appt.time}} with {{appt.doctor if user.patient else appt.patient}} - Status: {{appt.status}} </li>
+    {% for appt in appointments %}
+        {% if user.patient %}
+            <li> {{appt.date}}{{appt.time}} with Dr.{{appt.doctor.user.username}} - Status: {{appt.status}} </li>
+        {% else %}
+            <li> {{appt.date}} {{appt.time}} with patient {{appt.patient.user.username}} - Status: {{appt.status}} </li>
+        {% endif %}
     {% empty %}
         <li>No appointments found.</li>
     {% endfor %}
